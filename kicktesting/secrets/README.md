@@ -1,0 +1,11 @@
+# Your secrets for deploy.js
+
+Add your personal secrets key and account to secrets.js
+
+```js
+const metamask = 'put here the string with your 12 secrets words';
+
+const rinkeby = 'your rinkeby.infura.io https string';
+
+module.exports = { metamask, rinkeby };
+```

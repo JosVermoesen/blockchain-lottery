@@ -1,0 +1,38 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{ title }}</h4>
+  <button
+    type="button"
+    class="close pull-right"
+    aria-label="Close"
+    (click)="bsModalRef.hide()"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <h4 style="color: blue">id: {{ id }}</h4>
+
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>Address id</td>
+        <td>{{ addressId }}</td>
+      </tr>
+      <tr>
+        <td>Wei received</td>
+        <td>{{ weiReceived }}</td>
+      </tr>
+      <tr>
+        <td>Date/Time</td>
+        <td>{{ onDateTime }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">
+    {{ closeBtnName }}
+  </button>
+</div>

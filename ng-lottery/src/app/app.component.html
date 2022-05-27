@@ -1,0 +1,124 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Metamask Blockchain </span>
+  </div>
+</nav>
+
+<section class="bg-light text-center">
+  <h1>Lottery Contract</h1>
+  <p class="lead text-muted">Powered By Rinkeby Testnet with Angular 13</p>
+</section>
+
+<div>
+  <tabset>
+    <tab heading="Try" id="tab1">
+      <section>
+        <div class="card card-body mb-1">
+          <div>
+            This contract is managed by {{ manager | async }}. There are
+            currently {{ playersCount }} people entered, competing to win
+            {{ balance | async }} ether! There are already
+            {{ winnersCount }} winners!
+          </div>
+        </div>
+
+        <div class="card card-body mb-2">
+          <h5>Want to try your luck?</h5>
+          <form [formGroup]="amountForm" (ngSubmit)="submitEther()">
+            <div class="row">
+              <div class="form-group">
+                <label for="amount">Amount of ether</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="amount"
+                  id="amount"
+                  aria-describedby="amountHelp"
+                  placeholder="Enter amount"
+                />
+                <small id="amountHelp" class="form-text text-muted"
+                  >Please enter amount (min. 0.011 - max. 0.2)</small
+                >
+              </div>
+
+              <div class="d-grid gap-2">
+                <button
+                  type="submit"
+                  [disabled]="!amountForm.valid"
+                  [hidden]="busy"
+                  class="btn btn-primary"
+                >
+                  Send
+                </button>
+                <a
+                  href="https://faucets.chain.link/rinkeby"
+                  target="_blank"
+                  class="btn btn-success"
+                  >Go beg for more free ETH!</a
+                >
+              </div>
+            </div>
+          </form>
+          <hr />
+          <div *ngIf="showAccount">
+            <div>Your account: {{ userAccount }}</div>
+            <hr />
+          </div>
+
+          <div class="d-grid gap-2">
+            <div></div>
+            <button
+              (click)="pickWinner()"
+              [disabled]="playersCount == 0"
+              [hidden]="busy"
+              class="btn btn-danger"
+            >
+              Pick a winner!
+            </button>
+          </div>
+
+          <div *ngIf="busy">
+            <hr />
+            <h3>One moment please...</h3>
+          </div>
+        </div>
+      </section>
+    </tab>
+
+    <tab heading="Active Players" id="tab2">
+      <div class="card card-body mb-2">
+        <div *ngFor="let player of players | async">
+          {{ player }}
+        </div>
+      </div>
+    </tab>
+
+    <tab heading="Players History" id="tab3">
+      <div class="card card-body mb-2">
+        <div *ngFor="let details of playersDetails">
+          <button
+            type="button"
+            class="btn btn-link"
+            (click)="showPlayerDetailsModal(details)"
+          >
+            {{ details.addressId }}
+          </button>
+        </div>
+      </div>
+    </tab>
+
+    <tab heading="Winners History" id="tab4">
+      <div class="card card-body mb-2">
+        <div *ngFor="let details of winnersDetails">
+          <button
+            type="button"
+            class="btn btn-link"
+            (click)="showWinnerDetailsModal(details)"
+          >
+            {{ details.addressId }}
+          </button>
+        </div>
+      </div>
+    </tab>
+  </tabset>
+</div>
