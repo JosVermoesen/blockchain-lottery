@@ -1,6 +1,6 @@
 # blockchain-lottery
 
-- Kicktesting: For compiling, testing and deploying
+- code-compile-test-deploy: For coding, compiling, testing and deploying
 - ng-lottery: Angular 13 app using the deployed lottery blockchain
 - react-lottery: React 18 app using the deployed lottery blockchain
 
