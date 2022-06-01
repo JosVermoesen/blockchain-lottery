@@ -1,4 +1,4 @@
-# KickTesting
+# CodeCompileTestDeploy
 
 ## Development Tools used for this app
 
@@ -11,7 +11,7 @@ Generate the project with npm.
 Make directory and run `npm init` inside the project root, give it a name, accept most proposals, only where asking for test script, answer with `mocha`
 
 ```json
-"name": "kicktesting",
+"name": "code-compile-test-deploy",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
