@@ -14,15 +14,18 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 - [NodeJS](https://nodejs.org/)
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [Angular CLI](https://www.npmjs.com/package/@angular/cli): `npm i -g @angular/cli`
+- [Angular CLI](https://www.npmjs.com/package/@angular/cli): `npm i @angular/cli@13.3.5`
 - [Remix for ethereum](https://remix.ethereum.org/)
 - [Metamask](https://metamask.io/)
 
 ## NPM packages used for this app
 
-### 1. bootstrap and bootswatch
+- You can clone or start a new Angular project: `ng new ng-lottery`
+- cd into directory after creation: `cd ng-lottery`
 
-`npm i bootstrap bootswatch` to install bootstrap and the open source bootswatch themes
+### 1. Add bootstrap and bootswatch
+
+`npm i bootstrap bootswatch ngx-bootstrap@8.0.0` to install bootstrap, the open source bootswatch themes and make ngx-bootstrap components available
 
 #### set in file styles.scss your prefered theme:
 
@@ -96,11 +99,10 @@ global.Buffer = global.Buffer || Buffer;
 - or just install all in one command stroke:
   `npm i stream-browserify assert crypto-browserify stream-http https-browserify os-browserify url`
 
-#### add in tsconfig.json:
+#### for tsconfig.json add into compilerOptions:
 
 ```json
-"compilerOptions": {
-    "paths": {
+"paths": {
       "stream": [
         "./node_modules/stream-browserify"
       ],
