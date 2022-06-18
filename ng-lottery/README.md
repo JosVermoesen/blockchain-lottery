@@ -1,20 +1,20 @@
 # Ng-Lottery
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.8.
 
 ## Getting started for developers
 
 - [Install NodeJS](https://nodejs.org/). Hint: eventually install and use [nvm](https://medium.com/@Joachim8675309/installing-node-js-with-nvm-4dc469c977d9) for easy installing and/or switching between node versions
 - Clone this repository: `git clone https://github.com/JosVermoesen/blockchain-lottery`.
 - Run `npm install` inside 'every' project root.
-- Run `ng serve` or `npm start` in a terminal from the project root of the Angular project.
+- Run `ng serve -o` or `npm start` in a terminal from the project root of the Angular project.
 - Profit. :tada:
 
 ## Development Tools used for this app
 
 - [NodeJS](https://nodejs.org/)
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [Angular CLI](https://www.npmjs.com/package/@angular/cli): `npm i @angular/cli@13.3.5`
+- [Angular CLI](https://www.npmjs.com/package/@angular/cli): `npm i -g @angular/cli@13.3.8`
 - [Remix for ethereum](https://remix.ethereum.org/)
 - [Metamask](https://metamask.io/)
 
@@ -39,9 +39,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 // @import "~bootswatch/dist/[theme]/bootswatch";
 ```
 
-### 2. ngx-bootrap tabs
+### 2. ngx-bootstrap tabs and modal
 
-`ng add ngx-bootstrap --component tabs` to install
+- `ng add ngx-bootstrap --component tabs`
+- `ng add ngx-bootstrap --component modals`
 
 ### 3. Web3
 
@@ -126,6 +127,10 @@ global.Buffer = global.Buffer || Buffer;
       ],
     },
 ```
+
+### 5. momentjs
+
+- [momentjs](https://momentjs.com/): `npm i moment`
 
 ## Angular Further help
 

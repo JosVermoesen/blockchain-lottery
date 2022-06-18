@@ -30,7 +30,8 @@ export class Web3Service {
       window.ethereum
         .request({ method: 'eth_requestAccounts' })
         .catch((err: any) => {
-          console.log(err);
+          // console.log(err);
+          alert(err);
         });
     } else {
       alert(
@@ -83,9 +84,9 @@ export class Web3Service {
     for (let i = 0; i < totalWinners; i++) {
       const winnerRaw = await this.call('getWinnerDetails', i);
       const winnerNormalized = this.normalizeWinner(winnerRaw);
-   
+
       winnersHistory.push(winnerNormalized);
-    }    
+    }
     return winnersHistory;
   }
 
@@ -107,10 +108,14 @@ export class Web3Service {
   async sendEther(amount: string) {
     const acc = await this.getAccount();
 
-    await this.contract.methods.enter(momentDate).send({
-      from: acc,
-      value: this.web3.utils.toWei(amount, 'ether'),
-    });
+    try {
+      await this.contract.methods.enter(momentDate).send({
+        from: acc,
+        value: this.web3.utils.toWei(amount, 'ether'),
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   async managerIsUser(): Promise<boolean> {
