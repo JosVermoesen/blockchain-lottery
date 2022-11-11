@@ -45,15 +45,15 @@ All in one command:
 - Be sure using mocha for test scripts in package.json file.
 - `npm run test`
 
-## Rinkeby
+## Görli
 
-https://faucets.chain.link/rinkeby
+https://faucets.chain.link/goerli
 
-https://rinkeby.etherscan.io/
+https://goerli.etherscan.io/
 
 ## Infura API
 
-Getting access to the Rinkeby network
+Getting access to the API network
 https://infura.io
 
 ## Your secrets for deploy.js
@@ -63,9 +63,9 @@ Add your personal secrets key and account to secrets.js
 ```js
 const metamask = 'put here the string with your 12 secrets words';
 
-const rinkeby = 'your rinkeby.infura.io https string';
+const görli = 'your goerli.infura.io https string';
 
-module.exports = { metamask, rinkeby };
+module.exports = { metamask, görli };
 ```
 
 ## Varia
