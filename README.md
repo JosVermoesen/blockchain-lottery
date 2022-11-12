@@ -4,4 +4,4 @@
 - ng-lottery: Angular 13 app using the deployed lottery blockchain
 - react-lottery: React 18 app using the deployed lottery blockchain
 
-### Angular 13 version [on our Vsoft domain](https://blockchain-lottery.vsoft.be)
+### Angular 14 version [on our Vsoft domain](https://blockchain-lottery.vsoft.be)
