@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Web3Service } from './blockchain/web3.service';
 import { IPlayerDetails } from './models/playerdetails';
 import { IWinnerDetails } from './models/winnerdetails';
@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   bsModalRef!: BsModalRef;
   busy = false;
   showAccount = false;
-  amountForm!: FormGroup;
+  amountForm!: UntypedFormGroup;
   amount = 0;
 
   manager = this.ws.getManager();
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private modalService: BsModalService,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private ws: Web3Service
   ) {}
 
