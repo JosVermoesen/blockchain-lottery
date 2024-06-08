@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.4.26;
 
-// pragma solidity ^0.8.14;
-
 contract Lottery {
     address public manager;
     // 0.8.14 change below to: address payable[] public players;
@@ -112,17 +110,9 @@ contract Lottery {
         return winnersHistory.length;
     }
 
-    function getPlayerDetails(uint256 _id)
-        external
-        view
-        returns (
-            uint256,
-            address,
-            uint256,
-            uint256,
-            string
-        )
-    {
+    function getPlayerDetails(
+        uint256 _id
+    ) external view returns (uint256, address, uint256, uint256, string) {
         return (
             playersHistory[_id].id,
             playersHistory[_id].addressId,
@@ -132,16 +122,9 @@ contract Lottery {
         );
     }
 
-    function getWinnerDetails(uint256 _id)
-        external
-        view
-        returns (
-            uint256,
-            address,
-            uint256,
-            string
-        )
-    {
+    function getWinnerDetails(
+        uint256 _id
+    ) external view returns (uint256, address, uint256, string) {
         return (
             winnersHistory[_id].id,
             winnersHistory[_id].addressId,

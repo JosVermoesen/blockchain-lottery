@@ -3,6 +3,7 @@
 # Node
 /node_modules
 secrets.js
+build
 npm-debug.log
 yarn-error.log
 
