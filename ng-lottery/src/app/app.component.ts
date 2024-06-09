@@ -49,9 +49,7 @@ export class AppComponent implements OnInit {
     this.ws.managerIsUser().then((result) => {
       this.managerIsUser = result;
     });
-    // const checkManagerIsUser = await this.ws.call('manager');
-
-    // this.managerIsUser = checkManagerIsUser;
+    
     this.amountForm = this.fb.group({
       amount: [
         0,
