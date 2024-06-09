@@ -121,6 +121,7 @@ export class Web3Service {
   async managerIsUser(): Promise<boolean> {
     const manager = await this.call('manager');
     const acc = await this.getAccount();
+
     if (manager == acc) {
       return true;
     } else {

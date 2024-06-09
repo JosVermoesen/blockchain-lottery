@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { Web3Service } from './blockchain/web3.service';
 import { IPlayerDetails } from './models/playerdetails';
 import { IWinnerDetails } from './models/winnerdetails';
@@ -17,7 +21,8 @@ import { ModalWinnerDetailComponent } from './modal-winnerdetail/modal-winnerdet
 export class AppComponent implements OnInit {
   bsModalRef!: BsModalRef;
   busy = false;
-  showAccount = false;
+  
+  managerIsUser = false;
   amountForm!: UntypedFormGroup;
   amount = 0;
 
@@ -40,7 +45,13 @@ export class AppComponent implements OnInit {
     private ws: Web3Service
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.ws.managerIsUser().then((result) => {
+      this.managerIsUser = result;
+    });
+    // const checkManagerIsUser = await this.ws.call('manager');
+
+    // this.managerIsUser = checkManagerIsUser;
     this.amountForm = this.fb.group({
       amount: [
         0,
@@ -82,8 +93,7 @@ export class AppComponent implements OnInit {
   }
 
   submitEther() {
-    this.refresh();
-    this.showAccount = true;
+    this.refresh();    
     this.busy = true;
     const etherVal: number = this.amountForm.value.amount;
     this.ws.sendEther(etherVal.toString());
@@ -91,9 +101,7 @@ export class AppComponent implements OnInit {
 
   pickWinner() {
     this.ws.warnUser();
-
-    this.refresh();
-    this.showAccount = true;
+    this.refresh();    
     this.busy = true;
     this.ws.pickWinner();
   }

@@ -66,12 +66,12 @@
             </div>
           </form>
           <hr />
-          <div *ngIf="showAccount">
+          <div *ngIf="!managerIsUser">
             <div>Your account: {{ userAccount }}</div>
             <hr />
           </div>
 
-          <div class="d-grid gap-2">
+          <div *ngIf="managerIsUser" class="d-grid gap-2">
             <div></div>
             <button
               (click)="pickWinner()"
