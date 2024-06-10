@@ -27,7 +27,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 `npm i bootstrap bootswatch ngx-bootstrap@8.0.0` to install bootstrap, the open source bootswatch themes and make ngx-bootstrap components available
 
-#### set in file styles.scss your prefered theme:
+#### set in file styles.scss your prefered theme
 
 ```scss
 @import "~bootswatch/dist/sandstone/bootstrap.min.css";
@@ -48,7 +48,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 `npm i web3 web3-eth-contract` to install the [web3 ethereum](https://github.com/topics/ethereum?q=ethereum%2Fweb3) service component and the web3 contract package.
 
-#### add in file polyfill.ts:
+#### add in file polyfill.ts
 
 ```ts
 import "zone.js"; // Included with Angular CLI.
@@ -61,7 +61,7 @@ window.process = process;
 global.Buffer = global.Buffer || Buffer;
 ```
 
-#### add in file angular.json extra options;
+#### add in file angular.json extra options
 
 ```json
 "allowedCommonJsDependencies": [
@@ -70,7 +70,7 @@ global.Buffer = global.Buffer || Buffer;
 ],
 ```
 
-#### for building, increase budgets in angular.json;
+#### for building, increase budgets in angular.json
 
 ```json
 "budgets": [
@@ -100,7 +100,7 @@ global.Buffer = global.Buffer || Buffer;
 - or just install all in one command stroke:
   `npm i stream-browserify assert crypto-browserify stream-http https-browserify os-browserify url`
 
-#### for tsconfig.json add into compilerOptions:
+#### for tsconfig.json add into compilerOptions
 
 ```json
 "paths": {
@@ -131,6 +131,30 @@ global.Buffer = global.Buffer || Buffer;
 ### 5. momentjs
 
 - [momentjs](https://momentjs.com/): `npm i moment`
+
+## Updating to latest Angular 16
+
+This app is now on Angular 16.
+
+### update app to latest Angular 16
+
+`ng update @angular/cli@16 @angular/core@16`
+
+### update from older Angular versions to the latest
+
+Follow the instructions in the [Angular Update Guide](https://update.angular.io/) to fix your app.
+
+#### npm outdated
+
+In terminal use `npm outdated` to see what packages are requiring updates and what their current and wanted versions are.
+
+This will also show you which packages are deprecated.
+
+If you want to update a package to a version newer than what is specified in your package.json, you can do so by running npm update [package-name]@[version-number].
+
+### Use latest global Angular CLI
+
+`npm i -g @angular/cli`
 
 ## Angular Further help
 
