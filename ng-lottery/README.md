@@ -132,13 +132,13 @@ global.Buffer = global.Buffer || Buffer;
 
 - [momentjs](https://momentjs.com/): `npm i moment`
 
-## Updating to latest Angular 16
+## Updating to latest Angular 17
 
-This app is now on Angular 16.
+This app is now on Angular 17.
 
-### update app to latest Angular 16
+### update app to latest Angular 17
 
-`ng update @angular/cli@16 @angular/core@16`
+`ng update @angular/cli@17 @angular/core@17`
 
 ### update from older Angular versions to the latest
 
