@@ -8,4 +8,6 @@
 - ng-lottery: Angular 15 app using the deployed lottery blockchain
 - (work in progress) react-lottery: React 18 app
 
+https://docs.web3js.org/
+
 [BlockchainLottery]: https://blockchain-lottery.vsoft.be/
