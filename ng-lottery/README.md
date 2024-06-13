@@ -1,12 +1,12 @@
 # Ng-Lottery
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5, upgraded november 12, 2022 to version 14.2.10 with command: `ng update @angular/core@14 @angular/cli@14` and upgraded december 5, 2022 to version 15.0.2 with command: `ng update @angular/core@15 @angular/cli@15`
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5, upgraded november 13/06/2024 to version 18.0.3 with command: `ng update @angular/core@18 @angular/cli@18`
 
 ## Getting started for developers
 
 - [Install NodeJS](https://nodejs.org/). Hint: eventually install and use [nvm](https://medium.com/@Joachim8675309/installing-node-js-with-nvm-4dc469c977d9) for easy installing and/or switching between node versions
 - Clone this repository: `git clone https://github.com/JosVermoesen/blockchain-lottery`.
-- Run `npm install` inside 'every' project root.
+- Run `npm install` inside 'every' project root. (as lng as ngx-bootstrap is not ready yet for Angular 18, install with option force: `npm i --force` )
 - Run `ng serve -o` or `npm start` in a terminal from the project root of the Angular project.
 - Profit. :tada:
 
@@ -132,13 +132,13 @@ global.Buffer = global.Buffer || Buffer;
 
 - [momentjs](https://momentjs.com/): `npm i moment`
 
-## Updating to latest Angular 17
+## Updating to latest Angular 18
 
-This app is now on Angular 17.
+This app is now on Angular 18.
 
-### update app to latest Angular 17
+### update app to latest Angular 18
 
-`ng update @angular/cli@17 @angular/core@17`
+`ng update @angular/cli@18 @angular/core@18`
 
 ### update from older Angular versions to the latest
 

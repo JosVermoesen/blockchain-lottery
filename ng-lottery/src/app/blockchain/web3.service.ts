@@ -1,13 +1,12 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Observable } from 'rxjs';
-import Web3 from 'web3';
-import { Contract } from 'web3-eth-contract';
+import { Web3 } from 'web3';
 
-import * as moment from 'moment';
+import moment from 'moment';
 import { IPlayerDetails } from '../models/playerdetails';
 import { IWinnerDetails } from '../models/winnerdetails';
 
-const contractAbi = require('./lotteryABI.json');
+import contractAbi from './lotteryABI.json';
 const momentDate = moment().format();
 declare var window: any;
 
@@ -15,13 +14,12 @@ declare var window: any;
   providedIn: 'root',
 })
 export class Web3Service {
-  private web3!: Web3;
-  private contract!: Contract;
-  private contractAddress = '0x7e9f03A5625EF8815d418a735Db22680272DB46a';
+  private web3 = new Web3(window.ethereum);
+  private contract!: any;
+  private contractAddress = '0xB55B3588d7cBdaE4d881AB20E8c1b36D682b937C';
 
   constructor(private zone: NgZone) {
     if (window.web3) {
-      this.web3 = new Web3(window.ethereum);
       this.contract = new this.web3.eth.Contract(
         contractAbi,
         this.contractAddress
@@ -50,8 +48,17 @@ export class Web3Service {
 
   async getManager(): Promise<any> {
     const manager = await this.call('manager');
-
     return manager;
+  }
+
+  async getPlayersArray(): Promise<[]> {
+    const totalPlayers = await this.call('getPlayersArray');
+    return totalPlayers;
+  }
+
+  async getWinnersArray(): Promise<[]> {
+    const totalWinners = await this.call('getWinnersArray');
+    return totalWinners;
   }
 
   async getPlayersHistory(): Promise<IPlayerDetails[]> {
@@ -174,16 +181,6 @@ export class Web3Service {
     const winnerNormalized = this.normalizeWinner(winnerRaw);
 
     return winnerNormalized;
-  }
-
-  async getPlayersArray(): Promise<[]> {
-    const totalPlayers = await this.call('getPlayersArray');
-    return totalPlayers;
-  }
-
-  async getWinnersArray(): Promise<[]> {
-    const totalWinners = await this.call('getWinnersArray');
-    return totalWinners;
   }
 
   onEvents(event: string) {

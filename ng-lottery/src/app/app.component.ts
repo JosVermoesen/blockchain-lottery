@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  UntypedFormBuilder,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Web3Service } from './blockchain/web3.service';
 import { IPlayerDetails } from './models/playerdetails';
 import { IWinnerDetails } from './models/winnerdetails';
 
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { ModalPlayerDetailComponent } from './modal-playerdetail/modal-playerdetail.component';
-import { worker } from 'cluster';
+// import { worker } from 'cluster';
 import { ModalWinnerDetailComponent } from './modal-winnerdetail/modal-winnerdetail.component';
 
 @Component({
@@ -21,13 +17,13 @@ import { ModalWinnerDetailComponent } from './modal-winnerdetail/modal-winnerdet
 export class AppComponent implements OnInit {
   bsModalRef!: BsModalRef;
   busy = false;
-  
+
   managerIsUser = false;
-  amountForm!: UntypedFormGroup;
+  amountForm!: FormGroup;
   amount = 0;
 
   manager = this.ws.getManager();
-
+  
   players = this.ws.getPlayersArray();
   winners = this.ws.getWinnersArray();
   balance = this.ws.getBalance();
@@ -40,21 +36,29 @@ export class AppComponent implements OnInit {
   userAccount: string | undefined;
 
   constructor(
+    private fb: FormBuilder,
     private modalService: BsModalService,
-    private fb: UntypedFormBuilder,
     private ws: Web3Service
   ) {}
 
-  async ngOnInit() {
+  ngOnInit() {
     this.ws.managerIsUser().then((result) => {
       this.managerIsUser = result;
     });
-    
+
     this.amountForm = this.fb.group({
       amount: [
         0,
         [Validators.required, Validators.min(0.011), Validators.max(0.2)],
       ],
+    });
+
+     
+    
+    this.ws.onEvent('Enter').subscribe(async () => {
+      this.playersCount = (await this.players).length;
+      this.busy = false;
+      this.refresh();
     });
 
     this.ws.onEvent('Enter').subscribe(async () => {
@@ -67,12 +71,13 @@ export class AppComponent implements OnInit {
       this.winnersCount = (await this.winners).length;
       this.busy = false;
       this.refresh();
-    });
-
+    }); 
     this.refresh();
   }
 
   async refresh() {
+    this.userAccount = await this.ws.getAccount();
+
     this.ws.getPlayersHistory().then((result) => {
       this.playersDetails = result;
       // console.log(res);
