@@ -9,7 +9,7 @@
 - Run `ng serve -o` or `npm start` in a terminal from the project root of the Angular project.
 - Profit. :tada:
 
-## Project from Angular 13 to 14
+## Project from Angular 13 to 18
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5, upgraded june 2024 to version 18.0.3
 
