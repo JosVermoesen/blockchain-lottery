@@ -21,9 +21,5 @@ const deploy = async () => {
 };
 deploy();
 
-// Contract was deployed to:
-// 0x95f54cDe5A5ABD4d1429a90ee02A87Abe30E05B2 (25/05/2022) datetime added in structs
-// 0xC5852aBb836fe4401C593fb3aB98d4BAc708408F (26/05/2022) renaming functions
-// 0xa75C82eA03AFC3a52513c60f8e3000974A340697 (11/11/2022) görli instead of rinkeby
-// 0x7e9f03A5625EF8815d418a735Db22680272DB46a (08/06/2024) sepolia instead of görli
+// Contract deployed:
 // 0xB55B3588d7cBdaE4d881AB20E8c1b36D682b937C (13/06/2024) Sepolia
