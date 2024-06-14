@@ -1,42 +1,54 @@
 # Ng-Lottery
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5, upgraded november 13/06/2024 to version 18.0.3 with command: `ng update @angular/core@18 @angular/cli@18`
-
-## Getting started for developers
+## Getting started with our source code
 
 - [Install NodeJS](https://nodejs.org/). Hint: eventually install and use [nvm](https://medium.com/@Joachim8675309/installing-node-js-with-nvm-4dc469c977d9) for easy installing and/or switching between node versions
+- Install Angular globaly: `npm i -g @angular/cli`
 - Clone this repository: `git clone https://github.com/JosVermoesen/blockchain-lottery`.
-- Run `npm install` inside 'every' project root. (as lng as ngx-bootstrap is not ready yet for Angular 18, install with option force: `npm i --force` )
+- Run `npm i` inside the project root. (as long as ngx-bootstrap is not ready for Angular 18, you should add the --force flag: `npm i --force`)
 - Run `ng serve -o` or `npm start` in a terminal from the project root of the Angular project.
 - Profit. :tada:
+
+## Project from Angular 13 to 14
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5, upgraded june 2024 to version 18.0.3
+
+- `ng update @angular/core@14 @angular/cli@14`
+- `ng update @angular/core@15 @angular/cli@15`
+- `ng update @angular/core@16 @angular/cli@16`
+- `ng update @angular/core@17 @angular/cli@17`
+- `ng update @angular/core@18 @angular/cli@18`
+
+Every update has his challenges!
+
+## update from older Angular versions to the latest
+
+Follow the instructions in the [Angular Update Guide](https://update.angular.io/) to fix your app.
+
+### npm outdated
+
+In terminal use `npm outdated` to see what packages are requiring updates and what their current and wanted versions are.
+
+This will also show you which packages are deprecated.
+
+If you want to update a package to a version newer than what is specified in your package.json, you can do so by running npm update [package-name]@[version-number].
 
 ## Development Tools used for this app
 
 - [NodeJS](https://nodejs.org/)
 - [Visual Studio Code](https://code.visualstudio.com/)
-- [Angular CLI](https://www.npmjs.com/package/@angular/cli): `npm i -g @angular/cli@13.3.8`
+- [Angular CLI](https://www.npmjs.com/package/@angular/cli): `npm i -g @angular/cli@`
 - [Remix for ethereum](https://remix.ethereum.org/)
 - [Metamask](https://metamask.io/)
 
-## NPM packages used for this app
+### 1. Bootstrap, bootswatch and ngx-bootstrap
 
-- You can clone or start a new Angular project: `ng new ng-lottery`
-- cd into directory after creation: `cd ng-lottery`
-
-### 1. Add bootstrap and bootswatch
-
-`npm i bootstrap bootswatch ngx-bootstrap@8.0.0` to install bootstrap, the open source bootswatch themes and make ngx-bootstrap components available
+`npm i bootstrap bootswatch ngx-bootstrap --force` to install bootstrap, the open source bootswatch themes and ngx-bootstrap
 
 #### set in file styles.scss your prefered theme
 
 ```scss
 @import "~bootswatch/dist/sandstone/bootstrap.min.css";
-
-// Or use variables, e.g.:
-// $h1-font-size: 3rem;
-// @import "~bootswatch/dist/[theme]/variables";
-// @import "~bootstrap/scss/bootstrap";
-// @import "~bootswatch/dist/[theme]/bootswatch";
 ```
 
 ### 2. ngx-bootstrap tabs and modal
@@ -48,25 +60,17 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 `npm i web3 web3-eth-contract` to install the [web3 ethereum](https://github.com/topics/ethereum?q=ethereum%2Fweb3) service component and the web3 contract package.
 
-#### add in file polyfill.ts
-
-```ts
-import "zone.js"; // Included with Angular CLI.
-
-import * as process from "process";
-import { Buffer } from "buffer";
-
-window.process = process;
-(window as any).global = window;
-global.Buffer = global.Buffer || Buffer;
-```
-
 #### add in file angular.json extra options
 
 ```json
 "allowedCommonJsDependencies": [
     "hash.js",
-    "web3-utils"
+    "web3-utils",
+    "crc-32",
+    "@ethereumjs/rlp",
+    "setimmediate",
+    "cross-fetch",
+    "moment"
 ],
 ```
 
@@ -131,30 +135,6 @@ global.Buffer = global.Buffer || Buffer;
 ### 5. momentjs
 
 - [momentjs](https://momentjs.com/): `npm i moment`
-
-## Updating to latest Angular 18
-
-This app is now on Angular 18.
-
-### update app to latest Angular 18
-
-`ng update @angular/cli@18 @angular/core@18`
-
-### update from older Angular versions to the latest
-
-Follow the instructions in the [Angular Update Guide](https://update.angular.io/) to fix your app.
-
-#### npm outdated
-
-In terminal use `npm outdated` to see what packages are requiring updates and what their current and wanted versions are.
-
-This will also show you which packages are deprecated.
-
-If you want to update a package to a version newer than what is specified in your package.json, you can do so by running npm update [package-name]@[version-number].
-
-### Use latest global Angular CLI
-
-`npm i -g @angular/cli`
 
 ## Angular Further help
 

@@ -33,7 +33,7 @@ export class Web3Service {
         });
     } else {
       alert(
-        'Metamask not found. Install or enable Metamask. Be sure to run Rinkeby testwork'
+        'Metamask not found. Install or enable Metamask. Be sure to run Sepolia test network'
       );
     }
   }
