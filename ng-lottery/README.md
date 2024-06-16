@@ -5,11 +5,11 @@
 - [Install NodeJS](https://nodejs.org/). Hint: eventually install and use [nvm](https://medium.com/@Joachim8675309/installing-node-js-with-nvm-4dc469c977d9) for easy installing and/or switching between node versions
 - Install Angular globaly: `npm i -g @angular/cli`
 - Clone this repository: `git clone https://github.com/JosVermoesen/blockchain-lottery`.
-- Run `npm i` inside the project root. (as long as ngx-bootstrap is not ready for Angular 18, you should add the --force flag: `npm i --force`)
+- Run `npm i` inside the ng-lottery project folder. (as long as ngx-bootstrap is not ready for Angular 18, you should add the --force flag: `npm i --force`)
 - Run `ng serve -o` or `npm start` in a terminal from the project root of the Angular project.
 - Profit. :tada:
 
-## Project from Angular 13 to 18
+## Project started on Angular 13 and is now on 18 through updates
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5, upgraded june 2024 to version 18.0.3
 
@@ -19,6 +19,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - `ng update @angular/core@17 @angular/cli@17`
 - `ng update @angular/core@18 @angular/cli@18`
 
+This project is through updates of course totally different then when started on a fresh new Angular 18 installing template!
 Every update has his challenges!
 
 ## update from older Angular versions to the latest
