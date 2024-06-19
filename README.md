@@ -1,8 +1,8 @@
 # Blockchain-Lottery Contract
 
-## [React 18 Demo on vsoft.be (web3: 4.9.0)][REACT-BlockchainLottery]
+## [React 18 Demo on vsoft.be (web3: 4.10.0)][REACT-BlockchainLottery]
 
-## [Angular 18 Demo on vsoft.be (web3: 4.9.0)][NG-BlockchainLottery]
+## [Angular 18 Demo on vsoft.be (web3: 4.10.0)][NG-BlockchainLottery]
 
 ![BlockChain-Lottery](img/lottery.png)
 
