@@ -1,14 +1,5 @@
 [
   {
-    "constant": false,
-    "inputs": [{ "name": "dateNow", "type": "string" }],
-    "name": "pickWinner",
-    "outputs": [],
-    "payable": false,
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "constant": true,
     "inputs": [],
     "name": "getPlayersHistory",
@@ -34,10 +25,19 @@
       { "name": "", "type": "uint256" },
       { "name": "", "type": "address" },
       { "name": "", "type": "uint256" },
-      { "name": "", "type": "string" }
+      { "name": "", "type": "uint256" }
     ],
     "payable": false,
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "pickWinner",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -58,7 +58,7 @@
       { "name": "addressId", "type": "address" },
       { "name": "weiSent", "type": "uint256" },
       { "name": "seriesId", "type": "uint256" },
-      { "name": "onDateTime", "type": "string" }
+      { "name": "onDateTime", "type": "uint256" }
     ],
     "payable": false,
     "stateMutability": "view",
@@ -72,7 +72,7 @@
       { "name": "id", "type": "uint256" },
       { "name": "addressId", "type": "address" },
       { "name": "weiReceived", "type": "uint256" },
-      { "name": "onDateTime", "type": "string" }
+      { "name": "onDateTime", "type": "uint256" }
     ],
     "payable": false,
     "stateMutability": "view",
@@ -97,15 +97,6 @@
     "type": "function"
   },
   {
-    "constant": false,
-    "inputs": [{ "name": "dateNow", "type": "string" }],
-    "name": "enter",
-    "outputs": [],
-    "payable": true,
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
     "constant": true,
     "inputs": [{ "name": "", "type": "uint256" }],
     "name": "winners",
@@ -123,10 +114,19 @@
       { "name": "", "type": "address" },
       { "name": "", "type": "uint256" },
       { "name": "", "type": "uint256" },
-      { "name": "", "type": "string" }
+      { "name": "", "type": "uint256" }
     ],
     "payable": false,
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [],
+    "name": "enter",
+    "outputs": [],
+    "payable": true,
+    "stateMutability": "payable",
     "type": "function"
   },
   {

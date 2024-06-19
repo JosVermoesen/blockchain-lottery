@@ -23,3 +23,4 @@ deploy();
 
 // Contract deployed:
 // 0xB55B3588d7cBdaE4d881AB20E8c1b36D682b937C (13/06/2024) Sepolia
+// 0x369e5eb4b99b51FD06DDE434beE2475e373f1c5A (19/06/2024)

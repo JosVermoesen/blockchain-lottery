@@ -8,6 +8,7 @@ import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { ModalPlayerDetailComponent } from './modal-playerdetail/modal-playerdetail.component';
 // import { worker } from 'cluster';
 import { ModalWinnerDetailComponent } from './modal-winnerdetail/modal-winnerdetail.component';
+import { fromUnixTime } from 'date-fns';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit {
   amount = 0;
 
   manager = this.ws.getManager();
-  
+
   players = this.ws.getPlayersArray();
   winners = this.ws.getWinnersArray();
   balance = this.ws.getBalance();
@@ -53,8 +54,6 @@ export class AppComponent implements OnInit {
       ],
     });
 
-     
-    
     this.ws.onEvent('Enter').subscribe(async () => {
       this.playersCount = (await this.players).length;
       this.busy = false;
@@ -71,7 +70,7 @@ export class AppComponent implements OnInit {
       this.winnersCount = (await this.winners).length;
       this.busy = false;
       this.refresh();
-    }); 
+    });
     this.refresh();
   }
 
@@ -96,7 +95,7 @@ export class AppComponent implements OnInit {
   }
 
   submitEther() {
-    this.refresh();    
+    this.refresh();
     this.busy = true;
     const etherVal: number = this.amountForm.value.amount;
     this.ws.sendEther(etherVal.toString());
@@ -104,7 +103,7 @@ export class AppComponent implements OnInit {
 
   pickWinner() {
     this.ws.warnUser();
-    this.refresh();    
+    this.refresh();
     this.busy = true;
     this.ws.pickWinner();
   }
@@ -117,7 +116,7 @@ export class AppComponent implements OnInit {
         id: winner.id,
         addressId: winner.addressId,
         weiReceived: winner.weiReceived,
-        onDateTime: winner.onDateTime,
+        onDateTime: fromUnixTime(Number(winner.onDateTime)),
       },
     };
     this.bsModalRef = this.modalService.show(
@@ -135,7 +134,7 @@ export class AppComponent implements OnInit {
         id: player.id,
         addressId: player.addressId,
         weiSent: player.weiSent,
-        onDateTime: player.onDateTime,
+        onDateTime: fromUnixTime(Number(player.onDateTime)),
         seriesId: player.seriesId,
       },
     };
