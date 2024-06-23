@@ -17,7 +17,8 @@ import { fromUnixTime } from 'date-fns';
 })
 export class AppComponent implements OnInit {
   bsModalRef!: BsModalRef;
-  busy = false;
+
+  busyWeb3 = false;
 
   managerIsUser = false;
   amountForm!: FormGroup;
@@ -40,7 +41,11 @@ export class AppComponent implements OnInit {
     private fb: FormBuilder,
     private modalService: BsModalService,
     private ws: Web3Service
-  ) {}
+  ) {
+    this.ws.isBusy$.subscribe((isBusy) => {
+      this.busyWeb3 = isBusy || false;
+    });
+  }
 
   ngOnInit() {
     this.ws.managerIsUser().then((result) => {
@@ -56,19 +61,19 @@ export class AppComponent implements OnInit {
 
     this.ws.onEvent('Enter').subscribe(async () => {
       this.playersCount = (await this.players).length;
-      this.busy = false;
+      this.ws.setBusy(false);
       this.refresh();
     });
 
-    this.ws.onEvent('Enter').subscribe(async () => {
+    /* this.ws.onEvent('Enter').subscribe(async () => {
       this.playersCount = (await this.players).length;
       this.busy = false;
       this.refresh();
-    });
+    }); */
 
     this.ws.onEvent('PickWinner').subscribe(async () => {
       this.winnersCount = (await this.winners).length;
-      this.busy = false;
+      this.ws.setBusy(false);
       this.refresh();
     });
     this.refresh();
@@ -96,15 +101,19 @@ export class AppComponent implements OnInit {
 
   submitEther() {
     this.refresh();
-    this.busy = true;
+    this.ws.setBusy(true);
     const etherVal: number = this.amountForm.value.amount;
-    this.ws.sendEther(etherVal.toString());
+    try {
+      this.ws.sendEther(etherVal.toString());
+    } catch (error) {
+      alert(error);
+    }
   }
 
   pickWinner() {
     this.ws.warnUser();
     this.refresh();
-    this.busy = true;
+    this.ws.setBusy(true);
     this.ws.pickWinner();
   }
 

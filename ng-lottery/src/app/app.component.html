@@ -61,7 +61,7 @@
                 <button
                   type="submit"
                   [disabled]="!amountForm.valid"
-                  [hidden]="busy"
+                  [hidden]="busyWeb3"
                   class="btn btn-primary"
                 >
                   Send
@@ -80,14 +80,14 @@
             <button
               (click)="pickWinner()"
               [disabled]="playersCount == 0"
-              [hidden]="busy"
+              [hidden]="busyWeb3"
               class="btn btn-danger"
             >
               Pick a winner!
             </button>
           </div>
 
-          <div *ngIf="busy">
+          <div *ngIf="busyWeb3">
             <hr />
             <h3>One moment please...</h3>
           </div>

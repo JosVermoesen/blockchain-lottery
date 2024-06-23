@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Web3 } from 'web3';
 
 import { IPlayerDetails } from '../models/playerdetails';
@@ -13,6 +13,9 @@ declare var window: any;
   providedIn: 'root',
 })
 export class Web3Service {
+  private isBusySource = new BehaviorSubject<boolean | null>(false);
+  isBusy$ = this.isBusySource.asObservable();
+
   private web3 = new Web3(window.ethereum);
   private contract!: any;
   private contractAddress = '0x369e5eb4b99b51FD06DDE434beE2475e373f1c5A';
@@ -35,6 +38,14 @@ export class Web3Service {
         'Metamask not found. Install or enable Metamask. Be sure to run Sepolia test network'
       );
     }
+  }
+
+  setBusy(isBusy: boolean) {
+    this.isBusySource.next(isBusy);
+  }
+
+  getBusy() {
+    return this.isBusySource.value;
   }
 
   onEvent(name: string) {
@@ -112,15 +123,18 @@ export class Web3Service {
   }
 
   async sendEther(amount: string) {
-    const acc = await this.getAccount();
+    this.setBusy(true);
 
+    const acc = await this.getAccount();
     try {
       await this.contract.methods.enter().send({
         from: acc,
         value: this.web3.utils.toWei(amount, 'ether'),
       });
+      this.setBusy(false);
     } catch (error) {
-      console.log(error);
+      alert(error);
+      this.setBusy(false);
     }
   }
 
@@ -157,9 +171,16 @@ export class Web3Service {
       );
     }
 
-    await this.contract.methods.pickWinner().send({
-      from: acc,
-    });
+    try {
+      this.setBusy(true);
+      await this.contract.methods.pickWinner().send({
+        from: acc,
+      });
+      this.setBusy(false);
+    } catch (error) {
+      alert(error);
+      this.setBusy(false);
+    }
   }
 
   async call(fnName: string, ...args: any[]) {
