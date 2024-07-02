@@ -5,11 +5,11 @@
 - [Install NodeJS](https://nodejs.org/). Hint: eventually install and use [nvm](https://medium.com/@Joachim8675309/installing-node-js-with-nvm-4dc469c977d9) for easy installing and/or switching between node versions
 - Install Angular globaly: `npm i -g @angular/cli`
 - Clone this repository: `git clone https://github.com/JosVermoesen/blockchain-lottery`.
-- Run `npm i` inside the ng-lottery project folder. (as long as ngx-bootstrap is not ready for Angular 18, you should add the --force flag: `npm i --force`)
+- Run `npm i` inside the ng-lottery project folder.
 - Run `ng serve -o` or `npm start` in a terminal from the project root of the Angular project.
 - Profit. :tada:
 
-## Project started on Angular 13 and is now on 18 through updates
+## Project started first on Angular 13 and is now on 18 through updates
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.5, upgraded june 2024 to version 18.0.3
 
@@ -21,6 +21,26 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 This project is through updates of course totally different then when started on a fresh new Angular 18 installing template!
 Every update has his challenges!
+
+### ngx-bootstrap for Angular 18
+
+At the moment, it is still waiting for an update of ngx-bootstrap above v.12.0.0 to work smoothly with Angular 18. So for now we have 2 options:
+
+1. Force the installation with npm i --force
+2. Use the overrides in the package.json file
+
+```json
+"overrides": {
+    "ngx-bootstrap": {
+      "@angular/animations": "$@angular/animations",
+      "@angular/common": "$@angular/common",
+      "@angular/core": "$@angular/core",
+      "@angular/forms": "$@angular/forms"
+    }
+  },  
+```
+
+When updated ngx-bootstrap is available, we can remove the force or the overrides.
 
 ## update from older Angular versions to the latest
 
